@@ -1,0 +1,583 @@
+
+uduck.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000025c  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  0000025c  000002f0  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000002  00800060  00800060  000002f0  2**0
+                  ALLOC
+  3 .comment      00000011  00000000  00000000  000002f0  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000304  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000028  00000000  00000000  00000340  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000002b3  00000000  00000000  00000368  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000158  00000000  00000000  0000061b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000126  00000000  00000000  00000773  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000060  00000000  00000000  0000089c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000017d  00000000  00000000  000008fc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000300  00000000  00000000  00000a79  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000018  00000000  00000000  00000d79  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	1d c0       	rjmp	.+58     	; 0x3c <__ctors_end>
+   2:	2c c0       	rjmp	.+88     	; 0x5c <__bad_interrupt>
+   4:	2c c0       	rjmp	.+88     	; 0x5e <__vector_2>
+   6:	2a c0       	rjmp	.+84     	; 0x5c <__bad_interrupt>
+   8:	29 c0       	rjmp	.+82     	; 0x5c <__bad_interrupt>
+   a:	28 c0       	rjmp	.+80     	; 0x5c <__bad_interrupt>
+   c:	27 c0       	rjmp	.+78     	; 0x5c <__bad_interrupt>
+   e:	26 c0       	rjmp	.+76     	; 0x5c <__bad_interrupt>
+  10:	25 c0       	rjmp	.+74     	; 0x5c <__bad_interrupt>
+  12:	24 c0       	rjmp	.+72     	; 0x5c <__bad_interrupt>
+  14:	23 c0       	rjmp	.+70     	; 0x5c <__bad_interrupt>
+  16:	22 c0       	rjmp	.+68     	; 0x5c <__bad_interrupt>
+  18:	21 c0       	rjmp	.+66     	; 0x5c <__bad_interrupt>
+  1a:	20 c0       	rjmp	.+64     	; 0x5c <__bad_interrupt>
+  1c:	1f c0       	rjmp	.+62     	; 0x5c <__bad_interrupt>
+  1e:	77 c0       	rjmp	.+238    	; 0x10e <main+0x2e>
+  20:	79 c0       	rjmp	.+242    	; 0x114 <main+0x34>
+  22:	7b c0       	rjmp	.+246    	; 0x11a <main+0x3a>
+  24:	7d c0       	rjmp	.+250    	; 0x120 <main+0x40>
+  26:	7c c0       	rjmp	.+248    	; 0x120 <main+0x40>
+  28:	7e c0       	rjmp	.+252    	; 0x126 <main+0x46>
+  2a:	9f c0       	rjmp	.+318    	; 0x16a <main+0x8a>
+  2c:	e3 c0       	rjmp	.+454    	; 0x1f4 <main+0x114>
+  2e:	03 c1       	rjmp	.+518    	; 0x236 <main+0x156>
+  30:	04 c1       	rjmp	.+520    	; 0x23a <main+0x15a>
+  32:	05 c1       	rjmp	.+522    	; 0x23e <main+0x15e>
+  34:	06 c1       	rjmp	.+524    	; 0x242 <main+0x162>
+  36:	08 c1       	rjmp	.+528    	; 0x248 <main+0x168>
+  38:	07 c1       	rjmp	.+526    	; 0x248 <main+0x168>
+  3a:	09 c1       	rjmp	.+530    	; 0x24e <main+0x16e>
+
+0000003c <__ctors_end>:
+  3c:	11 24       	eor	r1, r1
+  3e:	1f be       	out	0x3f, r1	; 63
+  40:	cf e5       	ldi	r28, 0x5F	; 95
+  42:	d2 e0       	ldi	r29, 0x02	; 2
+  44:	de bf       	out	0x3e, r29	; 62
+  46:	cd bf       	out	0x3d, r28	; 61
+
+00000048 <__do_clear_bss>:
+  48:	20 e0       	ldi	r18, 0x00	; 0
+  4a:	a0 e6       	ldi	r26, 0x60	; 96
+  4c:	b0 e0       	ldi	r27, 0x00	; 0
+  4e:	01 c0       	rjmp	.+2      	; 0x52 <.do_clear_bss_start>
+
+00000050 <.do_clear_bss_loop>:
+  50:	1d 92       	st	X+, r1
+
+00000052 <.do_clear_bss_start>:
+  52:	a2 36       	cpi	r26, 0x62	; 98
+  54:	b2 07       	cpc	r27, r18
+  56:	e1 f7       	brne	.-8      	; 0x50 <.do_clear_bss_loop>
+  58:	43 d0       	rcall	.+134    	; 0xe0 <main>
+  5a:	fe c0       	rjmp	.+508    	; 0x258 <_exit>
+
+0000005c <__bad_interrupt>:
+  5c:	d1 cf       	rjmp	.-94     	; 0x0 <__vectors>
+
+0000005e <__vector_2>:
+#define SW1 0b00001000
+
+volatile unsigned int mode_counter = 0;
+
+
+ISR(PCINT0_vect) {
+  5e:	1f 92       	push	r1
+  60:	0f 92       	push	r0
+  62:	0f b6       	in	r0, 0x3f	; 63
+  64:	0f 92       	push	r0
+  66:	11 24       	eor	r1, r1
+  68:	2f 93       	push	r18
+  6a:	8f 93       	push	r24
+  6c:	9f 93       	push	r25
+    //_delay_ms(50);   //wait for half second
+   // PORTB ^= ~0b11101110;       //turn both LEDs off 
+    if(mode_counter < 16) { 
+  6e:	80 91 60 00 	lds	r24, 0x0060
+  72:	90 91 61 00 	lds	r25, 0x0061
+  76:	40 97       	sbiw	r24, 0x10	; 16
+  78:	50 f4       	brcc	.+20     	; 0x8e <__vector_2+0x30>
+        mode_counter++;
+  7a:	80 91 60 00 	lds	r24, 0x0060
+  7e:	90 91 61 00 	lds	r25, 0x0061
+  82:	01 96       	adiw	r24, 0x01	; 1
+  84:	90 93 61 00 	sts	0x0061, r25
+  88:	80 93 60 00 	sts	0x0060, r24
+  8c:	04 c0       	rjmp	.+8      	; 0x96 <__vector_2+0x38>
+    }
+    else{
+        mode_counter = 0;
+  8e:	10 92 61 00 	sts	0x0061, r1
+  92:	10 92 60 00 	sts	0x0060, r1
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  96:	2f ec       	ldi	r18, 0xCF	; 207
+  98:	81 e0       	ldi	r24, 0x01	; 1
+  9a:	91 e0       	ldi	r25, 0x01	; 1
+  9c:	21 50       	subi	r18, 0x01	; 1
+  9e:	80 40       	sbci	r24, 0x00	; 0
+  a0:	90 40       	sbci	r25, 0x00	; 0
+  a2:	e1 f7       	brne	.-8      	; 0x9c <__vector_2+0x3e>
+  a4:	00 c0       	rjmp	.+0      	; 0xa6 <__vector_2+0x48>
+  a6:	00 00       	nop
+    }
+    //PORTB ^=  0b00010001;       //turn LED off 
+    _delay_ms(20); 
+}
+  a8:	9f 91       	pop	r25
+  aa:	8f 91       	pop	r24
+  ac:	2f 91       	pop	r18
+  ae:	0f 90       	pop	r0
+  b0:	0f be       	out	0x3f, r0	; 63
+  b2:	0f 90       	pop	r0
+  b4:	1f 90       	pop	r1
+  b6:	18 95       	reti
+
+000000b8 <setup>:
+
+void setup() {
+    GIMSK = 0b00100000;    // turns on pin change interrupts
+  b8:	80 e2       	ldi	r24, 0x20	; 32
+  ba:	8b bf       	out	0x3b, r24	; 59
+    PCMSK = 0b00001000;    // turn on interrupts on pins PB3    
+  bc:	88 e0       	ldi	r24, 0x08	; 8
+  be:	85 bb       	out	0x15, r24	; 21
+    sei();
+  c0:	78 94       	sei
+    //DDRB = 0x00;         //PB as output
+    //PORTB &= ~0x00;         //keep all LEDs off}
+    DDRB |= _BV(PORTB0);         // OC0A
+  c2:	b8 9a       	sbi	0x17, 0	; 23
+    //DDRB |= _BV(PORTB1);        // OC0B
+    DDRB |= _BV(PORTB4);        // OC1B
+  c4:	bc 9a       	sbi	0x17, 4	; 23
+    DDRB |= _BV(PORTB3);
+  c6:	bb 9a       	sbi	0x17, 3	; 23
+
+    PORTB |= 0b00001000;         //enable pull-ups
+  c8:	c3 9a       	sbi	0x18, 3	; 24
+
+
+  // Timer 0, Channel A
+  TCCR0A = _BV(COM0A1) | _BV(WGM01) | _BV(WGM00);
+  ca:	83 e8       	ldi	r24, 0x83	; 131
+  cc:	8a bd       	out	0x2a, r24	; 42
+  TCCR0B = _BV(CS00);
+  ce:	91 e0       	ldi	r25, 0x01	; 1
+  d0:	93 bf       	out	0x33, r25	; 51
+  //OCR0A = 128 * 0.75 - 1;     // Duty Cycle
+  OCR0A = 256 * 0.99 - 1;     // Duty Cycle
+  d2:	8c ef       	ldi	r24, 0xFC	; 252
+  d4:	89 bd       	out	0x29, r24	; 41
+  // Timer 0, Channel B
+  //TCCR0A |= _BV(COM0B1);
+  //OCR0B = 256 * 0.25 - 1;     // Duty Cycle
+
+  // Timer 1
+  TCCR1 = _BV(CS10);
+  d6:	90 bf       	out	0x30, r25	; 48
+  GTCCR = _BV(COM1B1) | _BV(PWM1B);
+  d8:	90 e6       	ldi	r25, 0x60	; 96
+  da:	9c bd       	out	0x2c, r25	; 44
+  //const uint8_t f = 38000;
+  //OCR1C = 8000000.0 / f - 1;  // Frequency
+  OCR1B = 256 * 0.99 - 1;     // Duty Cycle
+  dc:	8b bd       	out	0x2b, r24	; 43
+  de:	08 95       	ret
+
+000000e0 <main>:
+}
+
+
+int main(void)
+{
+    setup();
+  e0:	eb df       	rcall	.-42     	; 0xb8 <setup>
+    PORTB &= ~0b11100110;       //turn both LEDs on
+  e2:	88 b3       	in	r24, 0x18	; 24
+  e4:	89 71       	andi	r24, 0x19	; 25
+  e6:	88 bb       	out	0x18, r24	; 24
+    uint8_t dir = 1;           // Direction 
+    uint16_t stall = 0;        // Initial stall counter
+  e8:	40 e0       	ldi	r20, 0x00	; 0
+  ea:	50 e0       	ldi	r21, 0x00	; 0
+
+int main(void)
+{
+    setup();
+    PORTB &= ~0b11100110;       //turn both LEDs on
+    uint8_t dir = 1;           // Direction 
+  ec:	31 e0       	ldi	r19, 0x01	; 1
+               break;
+           case 14:
+               OCR0A = 255;
+               OCR1B = 255; 
+           default: //everything off
+                    OCR0A = 255;
+  ee:	8f ef       	ldi	r24, 0xFF	; 255
+               OCR0A = 255;
+               OCR1B = 220; 
+               break;
+           case 13: //right eye only
+               OCR0A = 255;
+               OCR1B = 220; 
+  f0:	9c ed       	ldi	r25, 0xDC	; 220
+               OCR0A = 220;
+               OCR1B = 255;
+               break;
+           case 11: //right eye only
+               OCR0A = 255;
+               OCR1B = 250; 
+  f2:	6a ef       	ldi	r22, 0xFA	; 250
+                        ++stall;
+                        _delay_ms(10);
+                }
+                break; 
+           case 8: //left eye only
+               OCR0A = 254;
+  f4:	2e ef       	ldi	r18, 0xFE	; 254
+            case 1: //medium
+                OCR1B = 250;     // Duty Cycle
+                OCR0A = 250;     // Duty Cycle                PORTB |=  0b00011001;       //turn both LEDs on
+                break;
+            case 2:
+                OCR1B = 127; 
+  f6:	af e7       	ldi	r26, 0x7F	; 127
+    uint8_t dir = 1;           // Direction 
+    uint16_t stall = 0;        // Initial stall counter
+    uint16_t stall_time = 20; // # of clocks to stall at top/bottom
+    while(1)
+    {
+        switch(mode_counter){
+  f8:	e0 91 60 00 	lds	r30, 0x0060
+  fc:	f0 91 61 00 	lds	r31, 0x0061
+ 100:	ef 30       	cpi	r30, 0x0F	; 15
+ 102:	f1 05       	cpc	r31, r1
+ 104:	08 f0       	brcs	.+2      	; 0x108 <main+0x28>
+ 106:	a5 c0       	rjmp	.+330    	; 0x252 <main+0x172>
+ 108:	e1 5f       	subi	r30, 0xF1	; 241
+ 10a:	ff 4f       	sbci	r31, 0xFF	; 255
+ 10c:	09 94       	ijmp
+           case 0: //low light
+                OCR1B = 254;     // Duty Cycle
+ 10e:	2b bd       	out	0x2b, r18	; 43
+                OCR0A = 254;     // Duty Cycle
+ 110:	29 bd       	out	0x29, r18	; 41
+                break;
+ 112:	f2 cf       	rjmp	.-28     	; 0xf8 <main+0x18>
+            case 1: //medium
+                OCR1B = 250;     // Duty Cycle
+ 114:	6b bd       	out	0x2b, r22	; 43
+                OCR0A = 250;     // Duty Cycle                PORTB |=  0b00011001;       //turn both LEDs on
+ 116:	69 bd       	out	0x29, r22	; 41
+                break;
+ 118:	ef cf       	rjmp	.-34     	; 0xf8 <main+0x18>
+            case 2:
+                OCR1B = 127; 
+ 11a:	ab bd       	out	0x2b, r26	; 43
+                OCR0A = 127; 
+ 11c:	a9 bd       	out	0x29, r26	; 41
+                break;
+ 11e:	ec cf       	rjmp	.-40     	; 0xf8 <main+0x18>
+            case 3: //low/high
+                OCR1B = 254; 
+                OCR0A = 220; 
+                break; 
+            case 4: 
+                OCR1B = 254; 
+ 120:	2b bd       	out	0x2b, r18	; 43
+                OCR0A = 220; 
+ 122:	99 bd       	out	0x29, r25	; 41
+                break;
+ 124:	e9 cf       	rjmp	.-46     	; 0xf8 <main+0x18>
+            case 5: { //blink
+                stall_time = 10; // # of clocks to stall at top/bottom             
+                //sync eyes
+                OCR0A = OCR1B;  
+ 126:	7b b5       	in	r23, 0x2b	; 43
+ 128:	79 bd       	out	0x29, r23	; 41
+                // Stall at the top and bottom, and change direction
+                if(OCR0A == 254 || OCR0A == 230) {
+ 12a:	79 b5       	in	r23, 0x29	; 41
+ 12c:	7e 3f       	cpi	r23, 0xFE	; 254
+ 12e:	19 f0       	breq	.+6      	; 0x136 <main+0x56>
+ 130:	79 b5       	in	r23, 0x29	; 41
+ 132:	76 3e       	cpi	r23, 0xE6	; 230
+ 134:	99 f4       	brne	.+38     	; 0x15c <main+0x7c>
+                    // Switch directon at top
+                    if(OCR0A == 254) dir = -1;
+ 136:	39 b5       	in	r19, 0x29	; 41
+ 138:	3e 3f       	cpi	r19, 0xFE	; 254
+ 13a:	11 f0       	breq	.+4      	; 0x140 <main+0x60>
+                    else 
+                    {   // Disable LED at bottom
+                        // And switch direction
+                        //DDRB  |= _BV(DDB0);
+                        dir = 1; 
+ 13c:	31 e0       	ldi	r19, 0x01	; 1
+ 13e:	01 c0       	rjmp	.+2      	; 0x142 <main+0x62>
+                //sync eyes
+                OCR0A = OCR1B;  
+                // Stall at the top and bottom, and change direction
+                if(OCR0A == 254 || OCR0A == 230) {
+                    // Switch directon at top
+                    if(OCR0A == 254) dir = -1;
+ 140:	3f ef       	ldi	r19, 0xFF	; 255
+                        //DDRB  |= _BV(DDB0);
+                        dir = 1; 
+                    }
+                    while(stall < stall_time) 
+                    { 
+                        ++stall;
+ 142:	4f 5f       	subi	r20, 0xFF	; 255
+ 144:	5f 4f       	sbci	r21, 0xFF	; 255
+ 146:	e1 e2       	ldi	r30, 0x21	; 33
+ 148:	f1 ea       	ldi	r31, 0xA1	; 161
+ 14a:	31 97       	sbiw	r30, 0x01	; 1
+ 14c:	f1 f7       	brne	.-4      	; 0x14a <main+0x6a>
+ 14e:	00 c0       	rjmp	.+0      	; 0x150 <main+0x70>
+ 150:	00 00       	nop
+                    {   // Disable LED at bottom
+                        // And switch direction
+                        //DDRB  |= _BV(DDB0);
+                        dir = 1; 
+                    }
+                    while(stall < stall_time) 
+ 152:	4a 30       	cpi	r20, 0x0A	; 10
+ 154:	51 05       	cpc	r21, r1
+ 156:	a9 f7       	brne	.-22     	; 0x142 <main+0x62>
+                        ++stall;
+                        _delay_ms(10); 
+                    }
+                    // Turn output back on if necessary
+                    //if(OCR0A == 245) DDRB  &= ~(_BV(DDB0));
+                    stall = 0;
+ 158:	40 e0       	ldi	r20, 0x00	; 0
+ 15a:	50 e0       	ldi	r21, 0x00	; 0
+                }
+                // General case - increment direction either way
+                    OCR0A += dir;
+ 15c:	79 b5       	in	r23, 0x29	; 41
+ 15e:	73 0f       	add	r23, r19
+ 160:	79 bd       	out	0x29, r23	; 41
+                    OCR1B += dir;
+ 162:	7b b5       	in	r23, 0x2b	; 43
+ 164:	73 0f       	add	r23, r19
+ 166:	7b bd       	out	0x2b, r23	; 43
+                }
+                
+                break; 
+ 168:	c7 cf       	rjmp	.-114    	; 0xf8 <main+0x18>
+            case 6: //blink eyes alternatively
+                stall_time = 10; // # of clocks to stall at top/bottom             
+                //sync eyes
+                OCR0A = OCR1B;  
+ 16a:	4b b5       	in	r20, 0x2b	; 43
+ 16c:	49 bd       	out	0x29, r20	; 41
+                OCR0A = 254;
+ 16e:	29 bd       	out	0x29, r18	; 41
+                OCR1B = 220; 
+ 170:	9b bd       	out	0x2b, r25	; 43
+ 172:	e1 e2       	ldi	r30, 0x21	; 33
+ 174:	f1 ea       	ldi	r31, 0xA1	; 161
+ 176:	31 97       	sbiw	r30, 0x01	; 1
+ 178:	f1 f7       	brne	.-4      	; 0x176 <main+0x96>
+ 17a:	00 c0       	rjmp	.+0      	; 0x17c <main+0x9c>
+ 17c:	00 00       	nop
+ 17e:	e1 e2       	ldi	r30, 0x21	; 33
+ 180:	f1 ea       	ldi	r31, 0xA1	; 161
+ 182:	31 97       	sbiw	r30, 0x01	; 1
+ 184:	f1 f7       	brne	.-4      	; 0x182 <main+0xa2>
+ 186:	00 c0       	rjmp	.+0      	; 0x188 <main+0xa8>
+ 188:	00 00       	nop
+ 18a:	e1 e2       	ldi	r30, 0x21	; 33
+ 18c:	f1 ea       	ldi	r31, 0xA1	; 161
+ 18e:	31 97       	sbiw	r30, 0x01	; 1
+ 190:	f1 f7       	brne	.-4      	; 0x18e <main+0xae>
+ 192:	00 c0       	rjmp	.+0      	; 0x194 <main+0xb4>
+ 194:	00 00       	nop
+ 196:	e1 e2       	ldi	r30, 0x21	; 33
+ 198:	f1 ea       	ldi	r31, 0xA1	; 161
+ 19a:	31 97       	sbiw	r30, 0x01	; 1
+ 19c:	f1 f7       	brne	.-4      	; 0x19a <main+0xba>
+ 19e:	00 c0       	rjmp	.+0      	; 0x1a0 <main+0xc0>
+ 1a0:	00 00       	nop
+ 1a2:	e1 e2       	ldi	r30, 0x21	; 33
+ 1a4:	f1 ea       	ldi	r31, 0xA1	; 161
+ 1a6:	31 97       	sbiw	r30, 0x01	; 1
+ 1a8:	f1 f7       	brne	.-4      	; 0x1a6 <main+0xc6>
+ 1aa:	00 c0       	rjmp	.+0      	; 0x1ac <main+0xcc>
+ 1ac:	00 00       	nop
+                stall = 0; 
+                while(stall < stall_time/2){
+                        ++stall;
+                        _delay_ms(10);
+                }
+                OCR0A = 220;
+ 1ae:	99 bd       	out	0x29, r25	; 41
+                OCR1B = 254; 
+ 1b0:	2b bd       	out	0x2b, r18	; 43
+ 1b2:	e1 e2       	ldi	r30, 0x21	; 33
+ 1b4:	f1 ea       	ldi	r31, 0xA1	; 161
+ 1b6:	31 97       	sbiw	r30, 0x01	; 1
+ 1b8:	f1 f7       	brne	.-4      	; 0x1b6 <main+0xd6>
+ 1ba:	00 c0       	rjmp	.+0      	; 0x1bc <main+0xdc>
+ 1bc:	00 00       	nop
+ 1be:	e1 e2       	ldi	r30, 0x21	; 33
+ 1c0:	f1 ea       	ldi	r31, 0xA1	; 161
+ 1c2:	31 97       	sbiw	r30, 0x01	; 1
+ 1c4:	f1 f7       	brne	.-4      	; 0x1c2 <main+0xe2>
+ 1c6:	00 c0       	rjmp	.+0      	; 0x1c8 <main+0xe8>
+ 1c8:	00 00       	nop
+ 1ca:	e1 e2       	ldi	r30, 0x21	; 33
+ 1cc:	f1 ea       	ldi	r31, 0xA1	; 161
+ 1ce:	31 97       	sbiw	r30, 0x01	; 1
+ 1d0:	f1 f7       	brne	.-4      	; 0x1ce <main+0xee>
+ 1d2:	00 c0       	rjmp	.+0      	; 0x1d4 <main+0xf4>
+ 1d4:	00 00       	nop
+ 1d6:	e1 e2       	ldi	r30, 0x21	; 33
+ 1d8:	f1 ea       	ldi	r31, 0xA1	; 161
+ 1da:	31 97       	sbiw	r30, 0x01	; 1
+ 1dc:	f1 f7       	brne	.-4      	; 0x1da <main+0xfa>
+ 1de:	00 c0       	rjmp	.+0      	; 0x1e0 <main+0x100>
+ 1e0:	00 00       	nop
+ 1e2:	e1 e2       	ldi	r30, 0x21	; 33
+ 1e4:	f1 ea       	ldi	r31, 0xA1	; 161
+ 1e6:	31 97       	sbiw	r30, 0x01	; 1
+ 1e8:	f1 f7       	brne	.-4      	; 0x1e6 <main+0x106>
+ 1ea:	00 c0       	rjmp	.+0      	; 0x1ec <main+0x10c>
+ 1ec:	00 00       	nop
+                stall = 0; 
+                while(stall < stall_time/2){
+                        ++stall;
+ 1ee:	45 e0       	ldi	r20, 0x05	; 5
+ 1f0:	50 e0       	ldi	r21, 0x00	; 0
+ 1f2:	82 cf       	rjmp	.-252    	; 0xf8 <main+0x18>
+                }
+                break; 
+            case 7: //blink eyes alternatively
+                stall_time = 5; // # of clocks to stall at top/bottom             
+                //sync eyes
+                OCR0A = OCR1B;  
+ 1f4:	4b b5       	in	r20, 0x2b	; 43
+ 1f6:	49 bd       	out	0x29, r20	; 41
+                OCR0A = 254;
+ 1f8:	29 bd       	out	0x29, r18	; 41
+                OCR1B = 220; 
+ 1fa:	9b bd       	out	0x2b, r25	; 43
+ 1fc:	e1 e2       	ldi	r30, 0x21	; 33
+ 1fe:	f1 ea       	ldi	r31, 0xA1	; 161
+ 200:	31 97       	sbiw	r30, 0x01	; 1
+ 202:	f1 f7       	brne	.-4      	; 0x200 <main+0x120>
+ 204:	00 c0       	rjmp	.+0      	; 0x206 <main+0x126>
+ 206:	00 00       	nop
+ 208:	e1 e2       	ldi	r30, 0x21	; 33
+ 20a:	f1 ea       	ldi	r31, 0xA1	; 161
+ 20c:	31 97       	sbiw	r30, 0x01	; 1
+ 20e:	f1 f7       	brne	.-4      	; 0x20c <main+0x12c>
+ 210:	00 c0       	rjmp	.+0      	; 0x212 <main+0x132>
+ 212:	00 00       	nop
+                stall = 0; 
+                while(stall < stall_time/2){
+                        ++stall;
+                        _delay_ms(10);
+                }
+                OCR0A = 220;
+ 214:	99 bd       	out	0x29, r25	; 41
+                OCR1B = 254; 
+ 216:	2b bd       	out	0x2b, r18	; 43
+ 218:	e1 e2       	ldi	r30, 0x21	; 33
+ 21a:	f1 ea       	ldi	r31, 0xA1	; 161
+ 21c:	31 97       	sbiw	r30, 0x01	; 1
+ 21e:	f1 f7       	brne	.-4      	; 0x21c <main+0x13c>
+ 220:	00 c0       	rjmp	.+0      	; 0x222 <main+0x142>
+ 222:	00 00       	nop
+ 224:	e1 e2       	ldi	r30, 0x21	; 33
+ 226:	f1 ea       	ldi	r31, 0xA1	; 161
+ 228:	31 97       	sbiw	r30, 0x01	; 1
+ 22a:	f1 f7       	brne	.-4      	; 0x228 <main+0x148>
+ 22c:	00 c0       	rjmp	.+0      	; 0x22e <main+0x14e>
+ 22e:	00 00       	nop
+                stall = 0; 
+                while(stall < stall_time/2){
+                        ++stall;
+ 230:	42 e0       	ldi	r20, 0x02	; 2
+ 232:	50 e0       	ldi	r21, 0x00	; 0
+ 234:	61 cf       	rjmp	.-318    	; 0xf8 <main+0x18>
+                        _delay_ms(10);
+                }
+                break; 
+           case 8: //left eye only
+               OCR0A = 254;
+ 236:	29 bd       	out	0x29, r18	; 41
+ 238:	0d c0       	rjmp	.+26     	; 0x254 <main+0x174>
+               OCR1B = 255;
+               break;
+           case 9: //left eye only
+               OCR0A = 250;
+ 23a:	69 bd       	out	0x29, r22	; 41
+ 23c:	0b c0       	rjmp	.+22     	; 0x254 <main+0x174>
+               OCR1B = 255;
+               break;
+           case 10: //left eye only
+               OCR0A = 220;
+ 23e:	99 bd       	out	0x29, r25	; 41
+ 240:	09 c0       	rjmp	.+18     	; 0x254 <main+0x174>
+               OCR1B = 255;
+               break;
+           case 11: //right eye only
+               OCR0A = 255;
+ 242:	89 bd       	out	0x29, r24	; 41
+               OCR1B = 250; 
+ 244:	6b bd       	out	0x2b, r22	; 43
+               break;
+ 246:	58 cf       	rjmp	.-336    	; 0xf8 <main+0x18>
+           case 12: //right eye only
+               OCR0A = 255;
+               OCR1B = 220; 
+               break;
+           case 13: //right eye only
+               OCR0A = 255;
+ 248:	89 bd       	out	0x29, r24	; 41
+               OCR1B = 220; 
+ 24a:	9b bd       	out	0x2b, r25	; 43
+               break;
+ 24c:	55 cf       	rjmp	.-342    	; 0xf8 <main+0x18>
+           case 14:
+               OCR0A = 255;
+ 24e:	89 bd       	out	0x29, r24	; 41
+               OCR1B = 255; 
+ 250:	8b bd       	out	0x2b, r24	; 43
+           default: //everything off
+                    OCR0A = 255;
+ 252:	89 bd       	out	0x29, r24	; 41
+                    OCR1B = 255;
+ 254:	8b bd       	out	0x2b, r24	; 43
+                    break;      
+ 256:	50 cf       	rjmp	.-352    	; 0xf8 <main+0x18>
+
+00000258 <_exit>:
+ 258:	f8 94       	cli
+
+0000025a <__stop_program>:
+ 25a:	ff cf       	rjmp	.-2      	; 0x25a <__stop_program>
